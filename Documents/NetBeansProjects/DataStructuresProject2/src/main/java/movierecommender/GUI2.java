@@ -76,47 +76,22 @@ public class GUI2 extends javax.swing.JFrame {
         cmbMovie1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbMovie1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Movie A", "Movie B", "Movie C", "Movie D", "Movie E" }));
         cmbMovie1.setPreferredSize(new java.awt.Dimension(300, 45));
-        cmbMovie1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbMovie1ActionPerformed(evt);
-            }
-        });
 
         cmbMovie2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbMovie2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Movie A", "Movie B", "Movie C", "Movie D", "Movie E" }));
         cmbMovie2.setPreferredSize(new java.awt.Dimension(300, 45));
-        cmbMovie2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbMovie2ActionPerformed(evt);
-            }
-        });
 
         cmbMovie3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbMovie3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Movie A", "Movie B", "Movie C", "Movie D", "Movie E" }));
         cmbMovie3.setPreferredSize(new java.awt.Dimension(300, 45));
-        cmbMovie3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbMovie3ActionPerformed(evt);
-            }
-        });
 
         cmbMovie4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbMovie4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Movie A", "Movie B", "Movie C", "Movie D", "Movie E" }));
         cmbMovie4.setPreferredSize(new java.awt.Dimension(300, 45));
-        cmbMovie4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbMovie4ActionPerformed(evt);
-            }
-        });
 
         cmbMovie5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbMovie5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Movie A", "Movie B", "Movie C", "Movie D", "Movie E" }));
         cmbMovie5.setPreferredSize(new java.awt.Dimension(300, 45));
-        cmbMovie5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbMovie5ActionPerformed(evt);
-            }
-        });
 
         txtAreaMovieResult.setColumns(20);
         txtAreaMovieResult.setRows(5);
@@ -320,26 +295,6 @@ public class GUI2 extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
     }//GEN-LAST:event_btnMovieRecommendActionPerformed
-
-    private void cmbMovie1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMovie1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbMovie1ActionPerformed
-
-    private void cmbMovie2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMovie2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbMovie2ActionPerformed
-
-    private void cmbMovie3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMovie3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbMovie3ActionPerformed
-
-    private void cmbMovie4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMovie4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbMovie4ActionPerformed
-
-    private void cmbMovie5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMovie5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbMovie5ActionPerformed
 
     private void btnPreviousPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousPageActionPerformed
         // TODO add your handling code here:

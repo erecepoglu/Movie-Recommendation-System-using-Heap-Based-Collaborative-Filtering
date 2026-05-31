@@ -18,7 +18,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             system = new MovieRecommendationSystem("main_data.csv", "movies.csv", "target_user.csv");
 
-            // Clear default NetBeans items just in case
+            
             cmbTargetUser.removeAllItems();
 
             java.util.ArrayList<String> ids = system.getTargetUserIds();
@@ -32,8 +32,7 @@ public class GUI extends javax.swing.JFrame {
                 cmbTargetUser.addItem(id);
             }
             this.setTitle("Movie Recommender - Target User");
-            this.setLocationRelativeTo(null); // Center window
-            // -------------------------------
+            this.setLocationRelativeTo(null); 
 
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error loading files: " + e.getMessage());
@@ -63,11 +62,6 @@ public class GUI extends javax.swing.JFrame {
 
         cmbTargetUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbTargetUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbTargetUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbTargetUserActionPerformed(evt);
-            }
-        });
 
         btnTargetRecommend.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnTargetRecommend.setText("Get Recommendations");
@@ -174,15 +168,10 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnNextPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextPageActionPerformed
         // TODO add your handling code here:
-//        btnNextPage.setEnabled(false);
         GUI2 page2 = new GUI2();
         page2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnNextPageActionPerformed
-
-    private void cmbTargetUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTargetUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbTargetUserActionPerformed
 
     /**
      * @param args the command line arguments

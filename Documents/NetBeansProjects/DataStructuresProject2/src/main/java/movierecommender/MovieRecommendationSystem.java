@@ -9,7 +9,7 @@ public class MovieRecommendationSystem {
     private HashMap<Integer, String> movieNames = new HashMap<>();
     private HashMap<String, int[]> targetUsers = new HashMap<>();
     private HashMap<Integer, Integer> movieIdToColIndex = new HashMap<>();
-    private HashMap<Integer, Integer> colIndexToMovieId = new HashMap<>(); // FIXED: Added reverse lookup
+    private HashMap<Integer, Integer> colIndexToMovieId = new HashMap<>(); 
     private int movieCount = 0;
 
     public MovieRecommendationSystem(String mainDataPath, String moviesPath, String targetUserPath) throws IOException {
@@ -35,7 +35,7 @@ public class MovieRecommendationSystem {
 
             int actualMovieId = (headerMovieId != 0) ? headerMovieId : i;
             movieIdToColIndex.put(actualMovieId, i - 1);
-            colIndexToMovieId.put(i - 1, actualMovieId); // FIXED: Populating reverse lookup
+            colIndexToMovieId.put(i - 1, actualMovieId); 
         }
 
         String line;
@@ -45,7 +45,7 @@ public class MovieRecommendationSystem {
                 continue;
             }
 
-            String userId = parts[0].trim(); // FIXED: Changed from parts.trim()
+            String userId = parts[0].trim(); 
             int[] ratings = new int[movieCount];
 
             for (int i = 1; i < parts.length && i <= movieCount; i++) {
@@ -64,7 +64,7 @@ public class MovieRecommendationSystem {
             String[] parts = splitCsvLine(line);
             if (parts.length >= 2) {
                 int movieId = parseIntSafe(parts[0]);
-                String movieName = parts[1].trim();  // FIXED: Changed from parts.trim()
+                String movieName = parts[1].trim();  
                 movieNames.put(movieId, movieName);
             }
         }
@@ -86,7 +86,7 @@ public class MovieRecommendationSystem {
                 continue;
             }
 
-            String userId = parts[0].trim(); // FIXED: Changed from parts.trim()
+            String userId = parts[0].trim(); 
             int[] ratings = new int[movieCount];
 
             for (int i = 1; i < parts.length && i <= movieCount; i++) {
@@ -166,39 +166,6 @@ public class MovieRecommendationSystem {
         return recommendFromVector(userVector, xUsers, kMovies);
     }
 
-    private ArrayList<Integer> getTopUniqueMovies(int[] ratings, int needed, HashSet<Integer> alreadyRecommended) {
-        ArrayList<Integer> movieIds = new ArrayList<>();
-
-        for (int i = 0; i < ratings.length; i++) {
-            Integer movieId = colIndexToMovieId.get(i);
-
-            if (movieId == null) {
-                movieId = i + 1;
-            }
-
-            if (ratings[i] > 0
-                    && movieNames.containsKey(movieId)
-                    && !alreadyRecommended.contains(movieId)) {
-                movieIds.add(movieId);
-            }
-        }
-
-        movieIds.sort((m1, m2) -> {
-            int index1 = movieIdToColIndex.get(m1);
-            int index2 = movieIdToColIndex.get(m2);
-
-            return Integer.compare(ratings[index2], ratings[index1]);
-        });
-
-        ArrayList<Integer> result = new ArrayList<>();
-
-        for (int i = 0; i < needed && i < movieIds.size(); i++) {
-            result.add(movieIds.get(i));
-        }
-
-        return result;
-    }
-
     private ArrayList<String> recommendFromVector(int[] targetVector, int xUsers, int kMovies) {
         MaxHeap heap = new MaxHeap();
 
@@ -269,79 +236,6 @@ public class MovieRecommendationSystem {
 
         for (int i = 0; i < k && i < movieIds.size(); i++) {
             result.add(movieIds.get(i));
-        }
-
-        return result;
-    }
-
-    private ArrayList<Integer> getXMostRatedUserMovies(int[] ratings, int x) {
-        ArrayList<Integer> movieIds = new ArrayList<>();
-
-        for (int i = 0; i < ratings.length; i++) {
-            Integer movieId = colIndexToMovieId.get(i);
-            if (movieId == null) {
-                movieId = i + 1;
-            }
-
-            if (ratings[i] > 0 && movieNames.containsKey(movieId)) {
-                movieIds.add(movieId);
-            }
-        }
-
-        movieIds.sort((m1, m2) -> {
-            int index1 = movieIdToColIndex.get(m1);
-            int index2 = movieIdToColIndex.get(m2);
-            return Integer.compare(ratings[index2], ratings[index1]);
-        });
-
-        ArrayList<Integer> result = new ArrayList<>();
-        for (int i = 0; i < x && i < movieIds.size(); i++) {
-            result.add(movieIds.get(i));
-        }
-
-        return result;
-    }
-
-    private ArrayList<Integer> getTopKMoviesAllowDuplicates(int[] ratings, int k) {
-        ArrayList<Integer> result = new ArrayList<>();
-        boolean[] used = new boolean[ratings.length];
-
-        for (int count = 0; count < k; count++) {
-            int bestIndex = -1;
-            int bestRating = -1;
-
-            for (int i = 0; i < ratings.length; i++) {
-                if (used[i]) {
-                    continue;
-                }
-
-                Integer movieId = colIndexToMovieId.get(i);
-                if (movieId == null) {
-                    movieId = i + 1;
-                }
-
-                if (!movieNames.containsKey(movieId)) {
-                    continue;
-                }
-
-                if (ratings[i] > bestRating) {
-                    bestRating = ratings[i];
-                    bestIndex = i;
-                }
-            }
-
-            if (bestIndex == -1 || bestRating <= 0) {
-                break;
-            }
-
-            used[bestIndex] = true;
-
-            Integer movieId = colIndexToMovieId.get(bestIndex);
-            if (movieId == null) {
-                movieId = bestIndex + 1;
-            }
-
-            result.add(movieId);
         }
 
         return result;

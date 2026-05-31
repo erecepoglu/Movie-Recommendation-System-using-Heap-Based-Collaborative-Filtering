@@ -5,7 +5,7 @@ public class Main {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 GUI mainInterface = new GUI();
-                mainInterface.setLocationRelativeTo(null); // Centers the window on the screen
+                mainInterface.setLocationRelativeTo(null); 
                 mainInterface.setVisible(true);
             }
         });
